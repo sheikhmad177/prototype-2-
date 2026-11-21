@@ -168,6 +168,18 @@
       padding: 2px 7px; border-radius: 999px;
     }
 
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #14110e; color: #fff; padding: 11px 20px; border-radius: 999px;
+      font-size: 13px; font-weight: 600; z-index: 120; box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      border: 1px solid var(--gold); display: flex; align-items: center; gap: 10px; white-space: nowrap;
+    }
+    .toast-btn {
+      background: var(--gold); color: #fff; border: none; padding: 5px 11px;
+      border-radius: 999px; font-size: 11.5px; font-weight: 700; cursor: pointer;
+    }
+
     /* ---------------- Main Container ---------------- */
     .site-main {
       max-width: 1180px; margin: 0 auto; padding: 0 20px 64px; min-height: 72vh;
@@ -229,6 +241,11 @@
     .hcb-title { font-family: var(--serif); font-size: 15px; font-weight: 600; }
     .hcb-sub { font-size: 11px; color: var(--gold-soft); margin-top: 2px; }
     .hcb-price { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--gold-soft); flex-shrink: 0; }
+    .old-price { text-decoration: line-through; color: var(--ink-3); font-size: 14px; font-weight: 400; margin-right: 6px; }
+    .save-pill {
+      display: inline-block; background: rgba(27,122,67,.12); color: var(--success);
+      font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 5px;
+    }
 
     .features-strip {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
@@ -287,6 +304,11 @@
       background: rgba(201,42,42,.92); color: #fff; font-size: 10px; font-weight: 700;
       padding: 4px 9px; border-radius: 6px; letter-spacing: .5px;
     }
+    .pc-inbag {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--success); color: #fff; font-size: 10.5px; font-weight: 700;
+      padding: 4px 10px; border-radius: 999px;
+    }
     .pc-body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
     .pc-inspiration { font-size: 10.5px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--gold-dark); font-weight: 600; }
     .pc-title {
@@ -295,11 +317,10 @@
     }
     .pc-notes { font-size: 13px; color: var(--ink-2); line-height: 1.55; margin: 0 0 16px; flex: 1; }
     .pc-price-row {
-      display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
       padding-top: 12px; border-top: 1px solid var(--line-2); margin-bottom: 14px; flex-wrap: wrap;
     }
     .pc-price { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--ink); }
-    .pc-shipping-note { font-size: 11.5px; color: var(--success); font-weight: 600; }
     .pc-actions { display: grid; grid-template-columns: 1fr 1.35fr; gap: 8px; }
     .btn-card-sec {
       padding: 12px 10px; border-radius: 10px; border: 1px solid var(--line);
@@ -333,7 +354,7 @@
 
     /* ---------------- Checkout Container ---------------- */
     .checkout-container {
-      max-width: 640px; margin: 24px auto 0;
+      max-width: 660px; margin: 24px auto 0;
       background: var(--surface); border: 1px solid var(--line);
       border-radius: 16px; padding: 26px 22px; box-shadow: 0 14px 34px rgba(20,17,14,.05);
     }
@@ -355,13 +376,37 @@
     .section-h { font-family: var(--serif); font-size: clamp(20px, 4.5vw, 24px); font-weight: 600; margin: 0 0 16px; }
     .cart-item {
       display: flex; align-items: center; gap: 14px; padding: 14px;
-      border: 1px solid var(--line); border-radius: 12px; margin-bottom: 14px; background: var(--app-bg);
+      border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; background: var(--app-bg);
     }
     .ci-thumb-photo { width: 58px; height: 70px; object-fit: cover; border-radius: 8px; flex: 0 0 auto; background: #14110e; }
     .ci-info { flex: 1; min-width: 0; }
     .ci-name { font-size: 14.5px; font-weight: 600; }
     .ci-sub { font-size: 12px; color: var(--ink-2); margin-top: 3px; }
+    .qty-controls { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+    .qty-btn {
+      width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--line);
+      background: #fff; color: var(--ink); font-size: 15px; font-weight: 700; cursor: pointer;
+    }
+    .qty-btn:hover { border-color: var(--ink); }
+    .qty-val { font-size: 13.5px; font-weight: 700; min-width: 18px; text-align: center; }
     .ci-price { font-family: var(--serif); font-size: 17px; font-weight: 700; flex-shrink: 0; }
+
+    .upsell-box {
+      background: #fdfbf7; border: 1px dashed var(--gold); border-radius: 12px;
+      padding: 12px 14px; margin: 14px 0 18px;
+    }
+    .upsell-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--gold-dark); margin-bottom: 10px; }
+    .upsell-list { display: flex; flex-direction: column; gap: 8px; }
+    .upsell-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      background: #fff; padding: 8px 12px; border-radius: 9px; border: 1px solid var(--line-2);
+    }
+    .upsell-name { font-size: 13px; font-weight: 600; }
+    .upsell-btn {
+      background: var(--ink); color: #fff; border: none; padding: 6px 12px;
+      border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap;
+    }
+    .upsell-btn:hover { background: var(--gold-dark); }
 
     /* Dark Pattern 2: Low-contrast, muted pre-checked add-on */
     .addon.muted {
@@ -469,7 +514,7 @@
     .card-warn { border-color: rgba(214,40,40,.5); background: rgba(214,40,40,.1); }
     .card-warn .card-v { color: #f3a5a5; }
     .table-wrap { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .tele-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 660px; }
+    .tele-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 720px; }
     .tele-table th { text-align: left; padding: 11px 12px; background: rgba(0,0,0,.35); color: #b9bec7; font-size: 10.5px; letter-spacing: .7px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,.08); }
     .tele-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.05); color: #dfe3e9; }
     .grp-B { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: rgba(214,40,40,.25); color: #f0a8a8; }
@@ -481,12 +526,10 @@
       font-size: 10.5px; padding: 6px 11px; border-radius: 20px; cursor: pointer; backdrop-filter: blur(4px);
     }
 
-    /* ---------------- Mobile & Tablet Responsive Breakpoints ---------------- */
     @media (max-width: 820px) {
       .hero-section { grid-template-columns: 1fr; padding: 28px 0 36px; gap: 28px; text-align: center; }
       .hero-desc { margin-left: auto; margin-right: auto; }
-      .hero-actions { justify-content: center; }
-      .hero-stats { justify-content: center; }
+      .hero-actions, .hero-stats { justify-content: center; }
       .detail-grid { grid-template-columns: 1fr; padding: 18px; gap: 22px; }
     }
 
@@ -495,24 +538,17 @@
       .brand-sub, .live-pill { display: none; }
       .tabs { width: 100%; order: 3; margin-left: 0; justify-content: stretch; }
       .tab { flex: 1; text-align: center; padding: 7px 6px; font-size: 11px; }
-
       .header-inner { padding: 10px 14px; gap: 8px; }
       .site-logo { width: 34px; height: 34px; font-size: 13px; }
       .site-tagline { display: none; }
       .site-nav { gap: 10px; }
       .nav-link { font-size: 13px; padding: 6px 2px; }
       .cart-btn { padding: 7px 11px; font-size: 12px; }
-
       .site-main { padding: 0 14px 48px; }
       .hero-actions { flex-direction: column; width: 100%; }
       .btn-gold, .btn-outline { width: 100%; text-align: center; justify-content: center; }
       .hero-stats { width: 100%; justify-content: space-around; gap: 10px; }
-
-      .section-head { padding: 28px 0 18px; }
       .checkout-container { padding: 18px 14px; margin-top: 16px; border-radius: 14px; }
-      .step { font-size: 11px; gap: 4px; }
-      .step-line { width: 10px; margin: 0 2px; }
-      .cart-item { padding: 12px; gap: 10px; }
       .pc-actions { grid-template-columns: 1fr; }
     }
   </style>
@@ -530,37 +566,40 @@
         id: 'hero',
         name: 'SOOVEŔ Bleu Noir',
         subtitle: 'Inspired by Bleu de Chanel · 30 ml',
-        tag: 'Signature Best Seller',
+        tag: 'Flash Offer · 36% OFF',
         stockText: 'Only 2 bottles left!',
-        price: 50,
+        regularPrice: 700,
+        price: 450,
         img: 'hero.jpg',
         remoteImg: 'https:' + '//www.designarena.ai/u/042f2a76-1d0e-4ff9-bc2f-eb5ae7dc8c0d',
         notes: 'Crisp citrus, warm amber, and smoky incense wood crafted for timeless everyday elegance.',
-        highlights: ['Long-lasting · 8hr wear', 'Cruelty-free · Vegan formula', 'Hand-blended in Dhaka']
+        highlights: ['Regular ৳700 · Flash Offer ৳450', 'Long-lasting · 8hr wear', 'Hand-blended in Dhaka']
       },
       {
         id: 'alt1',
         name: 'SOOVEŔ Crimson Desire',
         subtitle: 'Inspired by Dunhill Desire · 30 ml',
-        tag: 'Evening Edition',
+        tag: 'Flash Offer · 26% OFF',
         stockText: 'Only 1 bottle left!',
-        price: 75,
+        regularPrice: 700,
+        price: 520,
         img: 'alt1.jpg',
         remoteImg: 'https:' + '//www.designarena.ai/u/eb2cc76b-4481-4981-83c2-329655ce78c9',
         notes: 'A bold fragrance of striking contrasts—bergamot, roasted coffee, creamy almond, and patchouli.',
-        highlights: ['Rich magnetic projection', 'Warm spice & tonka bean base', 'Pocket-friendly luxury flacon']
+        highlights: ['Regular ৳700 · Flash Offer ৳520', 'Warm spice & tonka bean base', 'Pocket-friendly luxury flacon']
       },
       {
         id: 'alt2',
         name: 'SOOVEŔ Velvet Royale',
         subtitle: 'Inspired by Good Girl · 30 ml',
-        tag: 'Collector’s Reserve',
+        tag: 'Flash Offer · 16% OFF',
         stockText: 'High Demand · 2 left',
-        price: 100,
+        regularPrice: 700,
+        price: 590,
         img: 'alt2.jpg',
         remoteImg: 'https:' + '//www.designarena.ai/u/a2926828-7ef3-41c9-aab5-d8fc0fad893c',
         notes: 'Luminous jasmine and tuberose layered over dark roasted cocoa, velvet musk, and sweet amber.',
-        highlights: ['Supreme Extrait concentration', 'Signature chess-edition bottle', 'Crafted in Dhaka']
+        highlights: ['Regular ৳700 · Flash Offer ৳590', 'Supreme Extrait concentration', 'Crafted in Dhaka']
       }
     ];
 
@@ -568,7 +607,7 @@
       deliveryFee: 50,
       giftBoxFee: 80,
       platformFee: 25,
-      budget: 200,
+      budget: 1200,
       urgencyStart: 170, // 02:50 countdown
       customer: {
         name: '',
@@ -578,12 +617,11 @@
     };
 
     /* ============================ STATE & GOOGLE SHEETS ============================ */
-    var STORAGE_KEY = 'soover_p2_orders_v4';
+    var STORAGE_KEY = 'soover_p2_orders_v5';
     var DEVICE_KEY  = 'soover_p2_device_id';
-    var SESSION_KEY = 'soover_p2_active_session_v4';
-    var SHEET_URL   = 'https:' + '//script.google.com/macros/s/AKfycbw7sMkpo8oV8aIkt_Hk-g-eAgkEuwDJE57Y-i0ZHFOP10raZha6jr3t52RCQ7Q2X_63jQ/exec';
+    var SESSION_KEY = 'soover_p2_active_session_v5';
+    var SHEET_URL   = 'var SHEET_URL   = 'https:' //script.google.com/macros/s/AKfycbzyRZr4XKyBet3eNiVJN1aeUVGKI_gesaaFjw-9sRZ6b2xrvs15DDDyReRmoNroRij25A/exec'; 
 
-    // 1. Persistent Device ID (1 Device = 1 Fixed ID even after page reload)
     var deviceId = '';
     try {
       deviceId = localStorage.getItem(DEVICE_KEY) || '';
@@ -595,14 +633,15 @@
       deviceId = 'DEV-' + Math.random().toString(36).slice(2, 8).toUpperCase();
     }
 
-    // 2. Completed Orders List (1 Row per Completed Order)
     var telemetry = [];
     try { telemetry = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e) {}
 
     var sessions = {};
-    var view = 'B'; // 'B' (Dark Patterns) or 'telemetry'
+    var view = 'B';
     var blind = false;
     var inspectorOn = true;
+    var toastTimer = null;
+    var toastText = '';
 
     /* ============================ HELPERS ============================ */
     function fmt(n){ return '৳' + n; }
@@ -622,13 +661,60 @@
       return PRODUCTS[0];
     }
 
+    function showToast(msg){
+      toastText = msg;
+      render();
+      if(toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){
+        toastText = '';
+        render();
+      }, 3200);
+    }
+
     function saveActiveSession(s){
       try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(s)); } catch(e) {}
     }
 
-    // Sends ONLY 1 summary row to Google Sheets when an order is completed
-    // Mapped to the 8 columns of SOOVER HCI Data:
-    // Col A: Timestamp | Col B: Device_ID | Col C: Group ('B') | Col D: Customer_Name | Col E: Product_&_Bill | Col F: Total_Clicks | Col G: Time_Sec | Col H: Wrong_Clicks
+    function getCartItems(s){
+      var cart = s.cart || {};
+      var list = [];
+      PRODUCTS.forEach(function(p){
+        var qty = Number(cart[p.id]) || 0;
+        if(qty > 0){
+          list.push({ prod: p, qty: qty, subtotal: p.price * qty });
+        }
+      });
+      return list;
+    }
+
+    function getCartCount(s){
+      return getCartItems(s).reduce(function(sum, it){ return sum + it.qty; }, 0);
+    }
+
+    function totals(s){
+      var items = getCartItems(s);
+      var itemTotal = items.reduce(function(sum, it){ return sum + it.subtotal; }, 0);
+      var count = items.reduce(function(sum, it){ return sum + it.qty; }, 0);
+      var gift = (count > 0 && s.giftBox) ? CONFIG.giftBoxFee : 0;
+      var delivery = count > 0 ? CONFIG.deliveryFee : 0;
+      var platform = count > 0 ? CONFIG.platformFee : 0; // Dark Pattern 3: Hidden Service Charge
+      var prodSummary = items.map(function(it){
+        return it.prod.name.replace('SOOVEŔ ', '') + ' x' + it.qty;
+      }).join(', ') || 'No item';
+      return {
+        items: items,
+        count: count,
+        item: itemTotal,
+        gift: gift,
+        delivery: delivery,
+        platform: platform,
+        total: itemTotal + gift + delivery + platform,
+        prodSummary: prodSummary
+      };
+    }
+
+    // Sends exact 9-column row matching Customer_Transactions:
+    // Timestamp | Device_ID | Group | Customer_Name | Product | Final_Bill | Total_Clicks | Elapsed_Sec | Misclicks
     function recordCompletedOrder(s){
       if(s.orderSubmitted) return;
       s.orderSubmitted = true;
@@ -637,18 +723,19 @@
       var elapsedSec = s.startedAt ? Math.max(1, Math.round((Date.now() - s.startedAt) / 1000)) : 1;
       var budgetStatus = t.total > CONFIG.budget ? 'EXCEEDED' : 'WITHIN';
       var customerName = (s.customer.name || '').trim() || 'Anonymous Participant';
+      var productCol = t.prodSummary + (s.giftBox ? ' + GiftBox' : '');
+      var finalBillCol = 'Final = ' + fmt(t.total) + ' (' + budgetStatus + ')';
 
       var entry = {
         t: new Date().toISOString(),
         sessionId: s.id,
         group: 'B',
-        screen: customerName, // Col D: Customer_Name
-        action: t.prod.name + ' | Final = ' + fmt(t.total) + ' (' + budgetStatus + ')', // Col E: Product_&_Bill
-        detail: 'Clicks: ' + (s.totalClicks || 1) + ' | GiftBox: ' + (s.giftBox ? 'ON' : 'OFF') + ' | Fee: +৳25', // Col F: Total_Clicks
-        elapsedSec: elapsedSec, // Col G: Time_Sec
-        misclicks: s.misclicks || 0, // Col H: Wrong_Clicks
+        customerName: customerName,
+        product: productCol,
+        finalBill: finalBillCol,
         totalClicks: s.totalClicks || 1,
-        customerName: customerName
+        elapsedSec: elapsedSec,
+        misclicks: s.misclicks || 0
       };
 
       telemetry.push(entry);
@@ -670,7 +757,7 @@
         var saved = sessionStorage.getItem(SESSION_KEY);
         if(saved){
           var parsed = JSON.parse(saved);
-          if(parsed && parsed.prototype === 'B') return parsed;
+          if(parsed && parsed.prototype === 'B' && parsed.cart) return parsed;
         }
       } catch(e) {}
 
@@ -679,6 +766,7 @@
         prototype: 'B',
         screen: 0,
         selectedProductId: 'hero',
+        cart: {},
         giftBox: true, // Dark Pattern 2: Pre-checked by default in Group B
         customer: { name: CONFIG.customer.name, address: CONFIG.customer.address, phone: CONFIG.customer.phone },
         urgency: CONFIG.urgencyStart,
@@ -707,7 +795,8 @@
     function startNewSession(s){
       s.screen = 0;
       s.selectedProductId = 'hero';
-      s.giftBox = true; // Reset to pre-checked for new session
+      s.cart = {};
+      s.giftBox = true;
       s.customer = { name: '', address: CONFIG.customer.address, phone: CONFIG.customer.phone };
       s.urgency = CONFIG.urgencyStart;
       s.startedAt = Date.now();
@@ -719,15 +808,6 @@
       if(typeof window !== 'undefined' && window.scrollTo) window.scrollTo(0, 0);
     }
 
-    function totals(s){
-      var prod = getProduct(s.selectedProductId);
-      var item = prod.price;
-      var gift = s.giftBox ? CONFIG.giftBoxFee : 0;
-      var delivery = CONFIG.deliveryFee;
-      var platform = CONFIG.platformFee; // Dark Pattern 3: Hidden Service Charge
-      return { prod: prod, item: item, gift: gift, delivery: delivery, platform: platform, total: item + gift + delivery + platform };
-    }
-
     function callout(n, title, desc){
       if(!inspectorOn) return '';
       return '<div class="dp-callout">'
@@ -737,32 +817,40 @@
     }
 
     function urgencyBannerHTML(s){
-      return '<div class="urgency-banner"><span class="pulse"></span>Flash Offer Ends in <b id="urgency-' + s.id + '">' + formatTime(s.urgency) + '</b> — Order Now Before Stock Runs Out!</div>';
+      return '<div class="urgency-banner"><span class="pulse"></span>Flash Offer Ends in <b id="urgency-' + s.id + '">' + formatTime(s.urgency) + '</b> — Order Before Stock Runs Out!</div>';
     }
 
     /* ============================ PAGES ============================ */
+    function renderProductCard(s, p, detailLabel, addLabel){
+      var inCartQty = (s.cart && s.cart[p.id]) ? s.cart[p.id] : 0;
+      var badge = inCartQty > 0
+        ? '<span class="pc-inbag">✓ In Bag (' + inCartQty + ')</span>'
+        : '<span class="pc-scarcity">' + esc(p.stockText) + '</span>';
+      return '<div class="product-card">'
+        + '<div class="pc-img-wrap" data-action="viewProduct" data-product="' + p.id + '">'
+        + '<span class="pc-tag">' + esc(p.tag) + '</span>'
+        + badge
+        + '<img src="' + p.img + '" onerror="this.onerror=null;this.src=\'' + p.remoteImg + '\';" alt="' + esc(p.name) + '" />'
+        + '</div>'
+        + '<div class="pc-body">'
+        + '<div class="pc-inspiration">' + esc(p.subtitle) + '</div>'
+        + '<h3 class="pc-title" data-action="viewProduct" data-product="' + p.id + '">' + esc(p.name) + '</h3>'
+        + '<p class="pc-notes">' + esc(p.notes) + '</p>'
+        + '<div class="pc-price-row">'
+        + '<div><span class="old-price">' + fmt(p.regularPrice) + '</span><span class="pc-price">' + fmt(p.price) + '</span></div>'
+        + '<span class="save-pill">Save ' + fmt(p.regularPrice - p.price) + '</span>'
+        + '</div>'
+        + '<div class="pc-actions">'
+        + '<button class="btn-card-sec" data-action="viewProduct" data-product="' + p.id + '">' + detailLabel + '</button>'
+        + '<button class="btn-card-pri" data-action="addItem" data-product="' + p.id + '">' + (inCartQty > 0 ? '+ Add Another' : addLabel) + '</button>'
+        + '</div>'
+        + '</div></div>';
+    }
+
     function homeHTML(s){
       var heroProd = PRODUCTS[0];
       var previewCards = PRODUCTS.map(function(p){
-        return '<div class="product-card">'
-          + '<div class="pc-img-wrap" data-action="viewProduct" data-product="' + p.id + '">'
-          + '<span class="pc-tag">' + esc(p.tag) + '</span>'
-          + '<span class="pc-scarcity">' + esc(p.stockText) + '</span>'
-          + '<img src="' + p.img + '" onerror="this.onerror=null;this.src=\'' + p.remoteImg + '\';" alt="' + esc(p.name) + '" />'
-          + '</div>'
-          + '<div class="pc-body">'
-          + '<div class="pc-inspiration">' + esc(p.subtitle) + '</div>'
-          + '<h3 class="pc-title" data-action="viewProduct" data-product="' + p.id + '">' + esc(p.name) + '</h3>'
-          + '<p class="pc-notes">' + esc(p.notes) + '</p>'
-          + '<div class="pc-price-row">'
-          + '<span class="pc-price">' + fmt(p.price) + '</span>'
-          + '<span class="pc-shipping-note">Special Offer Price</span>'
-          + '</div>'
-          + '<div class="pc-actions">'
-          + '<button class="btn-card-sec" data-action="viewProduct" data-product="' + p.id + '">Details</button>'
-          + '<button class="btn-card-pri" data-action="buyProduct" data-product="' + p.id + '">Add to Cart · ' + fmt(p.price) + '</button>'
-          + '</div>'
-          + '</div></div>';
+        return renderProductCard(s, p, 'Details', '+ Add to Bag');
       }).join('');
 
       return ''
@@ -772,13 +860,13 @@
         + '<div>'
         + '<span class="hero-eyebrow">SOOVEŔ · Maison de Parfum · Dhaka</span>'
         + '<h1 class="hero-title">Expressing <em>Royalty</em> in Every Drop.</h1>'
-        + '<p class="hero-desc">Discover handcrafted luxury extrait fragrances designed to leave an unforgettable signature. Limited flash stock available today with instant delivery across Dhaka.</p>'
+        + '<p class="hero-desc">Handcrafted 30ml Extrait de Parfum collection. Regular price ৳700 — now available at limited flash offer prices starting from ৳450. Mix &amp; match multiple fragrances before the timer expires.</p>'
         + '<div class="hero-actions">'
         + '<button class="btn-gold" data-action="goShop">Claim Offer in Shop →</button>'
-        + '<button class="btn-outline" data-action="buyProduct" data-product="hero">Quick Buy Bleu Noir (' + fmt(heroProd.price) + ')</button>'
+        + '<button class="btn-outline" data-action="goCart">View Shopping Bag (' + getCartCount(s) + ')</button>'
         + '</div>'
         + '<div class="hero-stats">'
-        + '<div><div class="stat-num">৳50 – ৳100</div><div class="stat-label">Flash Sale Prices</div></div>'
+        + '<div><div class="stat-num">৳450 – ৳590</div><div class="stat-label">Regular ৳700</div></div>'
         + '<div><div class="stat-num">8+ Hours</div><div class="stat-label">Lasting Projection</div></div>'
         + '<div><div class="stat-num">24h</div><div class="stat-label">Dhaka Dispatch</div></div>'
         + '</div>'
@@ -787,20 +875,20 @@
         + '<div class="hero-card" data-action="viewProduct" data-product="hero" style="cursor:pointer;">'
         + '<img src="' + heroProd.img + '" onerror="this.onerror=null;this.src=\'' + heroProd.remoteImg + '\';" alt="SOOVEŔ Bleu Noir" />'
         + '<div class="hero-card-badge">'
-        + '<div><div class="hcb-title">' + esc(heroProd.name) + '</div><div class="hcb-sub">Only 2 bottles left at this price!</div></div>'
+        + '<div><div class="hcb-title">' + esc(heroProd.name) + '</div><div class="hcb-sub">Regular ৳700 · Only 2 left!</div></div>'
         + '<div class="hcb-price">' + fmt(heroProd.price) + '</div>'
         + '</div>'
         + '</div>'
         + '</div>'
         + '</section>'
         + '<section class="features-strip">'
-        + '<div class="feature-box"><div class="feature-icon">✦</div><h3 class="feature-title">Extrait de Parfum</h3><p class="feature-text">High-concentration fragrance oils formulated for warm climate longevity and rich projection.</p></div>'
-        + '<div class="feature-box"><div class="feature-icon">✦</div><h3 class="feature-title">Limited Small-Batch</h3><p class="feature-text">Hand-blended in Dhaka in strictly capped micro-batches.</p></div>'
+        + '<div class="feature-box"><div class="feature-icon">✦</div><h3 class="feature-title">Flash Offer Discounts</h3><p class="feature-text">Save up to ৳250 per bottle off our ৳700 regular retail price during this flash window.</p></div>'
+        + '<div class="feature-box"><div class="feature-icon">✦</div><h3 class="feature-title">Multi-Bottle Bag</h3><p class="feature-text">Combine 1, 2, or all 3 signature perfumes into a single order.</p></div>'
         + '<div class="feature-box"><div class="feature-icon">✦</div><h3 class="feature-title">Instant Mobile Checkout</h3><p class="feature-text">Seamless payment via bKash and Nagad with real-time order confirmation.</p></div>'
         + '</section>'
         + '<section>'
         + '<div class="section-head">'
-        + '<div><div class="section-eyebrow">Curated Lineup</div><h2 class="section-title">Featured Fragrances</h2></div>'
+        + '<div><div class="section-eyebrow">Flash Offer Lineup (Reg. ৳700)</div><h2 class="section-title">Featured Fragrances</h2></div>'
         + '<button class="btn-outline" data-action="goShop">View Full Shop →</button>'
         + '</div>'
         + '<div class="product-grid">' + previewCards + '</div>'
@@ -809,36 +897,20 @@
 
     function shopHTML(s){
       var cards = PRODUCTS.map(function(p){
-        return '<div class="product-card">'
-          + '<div class="pc-img-wrap" data-action="viewProduct" data-product="' + p.id + '">'
-          + '<span class="pc-tag">' + esc(p.tag) + '</span>'
-          + '<span class="pc-scarcity">' + esc(p.stockText) + '</span>'
-          + '<img src="' + p.img + '" onerror="this.onerror=null;this.src=\'' + p.remoteImg + '\';" alt="' + esc(p.name) + '" />'
-          + '</div>'
-          + '<div class="pc-body">'
-          + '<div class="pc-inspiration">' + esc(p.subtitle) + '</div>'
-          + '<h3 class="pc-title" data-action="viewProduct" data-product="' + p.id + '">' + esc(p.name) + '</h3>'
-          + '<p class="pc-notes">' + esc(p.notes) + '</p>'
-          + '<div class="pc-price-row">'
-          + '<span class="pc-price">' + fmt(p.price) + '</span>'
-          + '<span class="pc-shipping-note">Flash Deal Active</span>'
-          + '</div>'
-          + '<div class="pc-actions">'
-          + '<button class="btn-card-sec" data-action="viewProduct" data-product="' + p.id + '">View Details</button>'
-          + '<button class="btn-card-pri" data-action="buyProduct" data-product="' + p.id + '">Add to Cart · ' + fmt(p.price) + '</button>'
-          + '</div>'
-          + '</div></div>';
+        return renderProductCard(s, p, 'View Details', '+ Add to Bag');
       }).join('');
+      var cnt = getCartCount(s);
 
       return '<section>'
         + urgencyBannerHTML(s)
         + callout(1, 'Fake Urgency & Omitted Delivery Fee', 'Delivery cost (+৳50) is hidden on the catalog cards while a countdown timer pressures quick selection.')
         + '<div class="section-head">'
         + '<div>'
-        + '<div class="section-eyebrow">Official Boutique Catalog</div>'
+        + '<div class="section-eyebrow">Official Boutique Catalog · Regular ৳700</div>'
         + '<h1 class="section-title">The Fragrance Shop</h1>'
-        + '<p class="section-sub">Select any fragrance below before the flash offer timer expires.</p>'
+        + '<p class="section-sub">Add one or multiple perfumes to your bag before the flash offer timer expires.</p>'
         + '</div>'
+        + (cnt > 0 ? '<button class="btn-gold" data-action="goCart">Proceed to Bag (' + cnt + ' items) →</button>' : '')
         + '</div>'
         + '<div class="product-grid">' + cards + '</div>'
         + '</section>';
@@ -847,6 +919,7 @@
     function productDetailHTML(s){
       var p = getProduct(s.selectedProductId);
       var bullets = p.highlights.map(function(h){ return '<li>' + esc(h) + '</li>'; }).join('');
+      var inCartQty = (s.cart && s.cart[p.id]) ? s.cart[p.id] : 0;
       return '<div class="detail-wrap">'
         + '<button class="back-link" data-action="goShop">← Back to Shop Collection</button>'
         + urgencyBannerHTML(s)
@@ -857,13 +930,16 @@
         + '<div class="section-eyebrow">' + esc(p.tag) + '</div>'
         + '<h1 class="section-title" style="margin-bottom:6px;">' + esc(p.name) + '</h1>'
         + '<div style="font-size:13.5px;color:var(--ink-2);margin-bottom:18px;">' + esc(p.subtitle) + '</div>'
-        + '<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap;">'
+        + '<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;">'
+        + '<span class="old-price" style="font-size:18px;">' + fmt(p.regularPrice) + '</span>'
         + '<span style="font-family:var(--serif);font-size:32px;font-weight:700;">' + fmt(p.price) + '</span>'
+        + '<span class="save-pill">Save ' + fmt(p.regularPrice - p.price) + '</span>'
         + '</div>'
         + '<div style="font-size:12.5px;color:var(--danger);font-weight:600;margin-bottom:18px;">● ' + esc(p.stockText) + ' — High demand</div>'
         + '<p style="font-size:14px;line-height:1.65;color:var(--ink-2);">' + esc(p.notes) + '</p>'
         + '<ul class="p-meta">' + bullets + '</ul>'
-        + '<button class="btn-primary" data-action="addToCart">Add to Cart — ' + fmt(p.price) + '</button>'
+        + '<button class="btn-primary" data-action="addItem" data-product="' + p.id + '">+ Add to Bag — ' + fmt(p.price) + (inCartQty > 0 ? ' (' + inCartQty + ' in bag)' : '') + '</button>'
+        + (inCartQty > 0 ? '<button class="btn-outline" style="width:100%;margin-top:10px;" data-action="goCart">Go to Shopping Bag (' + getCartCount(s) + ') →</button>' : '')
         + '</div>'
         + '</div></div>';
     }
@@ -879,16 +955,53 @@
 
     function cartHTML(s){
       var t = totals(s);
-      var cartSubtotal = t.item + t.gift; // Hides delivery and service charge in Cart
+      if(t.count === 0){
+        return '<div class="checkout-container" style="text-align:center;padding:44px 20px;">'
+          + '<h2 class="section-h">Your Shopping Bag is Empty</h2>'
+          + '<p style="color:var(--ink-2);font-size:14px;margin-bottom:20px;">Browse our flash offer collection and add 1 or more fragrances to your bag.</p>'
+          + '<button class="btn-gold" data-action="goShop">Browse Fragrances →</button>'
+          + '</div>';
+      }
+
+      var itemsHTML = t.items.map(function(it){
+        return '<div class="cart-item">'
+          + '<img class="ci-thumb-photo" src="' + it.prod.img + '" onerror="this.onerror=null;this.src=\'' + it.prod.remoteImg + '\';" alt="' + esc(it.prod.name) + '" />'
+          + '<div class="ci-info">'
+          + '<div class="ci-name">' + esc(it.prod.name) + '</div>'
+          + '<div class="ci-sub"><span class="old-price">' + fmt(it.prod.regularPrice) + '</span>' + fmt(it.prod.price) + ' each</div>'
+          + '<div class="qty-controls">'
+          + '<button class="qty-btn" data-action="decQty" data-product="' + it.prod.id + '">−</button>'
+          + '<span class="qty-val">' + it.qty + '</span>'
+          + '<button class="qty-btn" data-action="incQty" data-product="' + it.prod.id + '">+</button>'
+          + '</div>'
+          + '</div>'
+          + '<div class="ci-price">' + fmt(it.subtotal) + '</div>'
+          + '</div>';
+      }).join('');
+
+      var otherProducts = PRODUCTS.filter(function(p){ return !(s.cart && s.cart[p.id] > 0); });
+      var upsellHTML = '';
+      if(otherProducts.length > 0){
+        upsellHTML = '<div class="upsell-box">'
+          + '<div class="upsell-title">+ Add Another Perfume to Your Order</div>'
+          + '<div class="upsell-list">'
+          + otherProducts.map(function(p){
+              return '<div class="upsell-row">'
+                + '<div><div class="upsell-name">' + esc(p.name) + '</div><div style="font-size:11.5px;color:var(--ink-2);"><span class="old-price">' + fmt(p.regularPrice) + '</span><b>' + fmt(p.price) + '</b></div></div>'
+                + '<button class="upsell-btn" data-action="addItem" data-product="' + p.id + '">+ Add</button>'
+                + '</div>';
+            }).join('')
+          + '</div></div>';
+      }
+
+      var cartSubtotal = t.item + t.gift; // Hides delivery & service charge in Cart
+
       return '<div class="checkout-container">'
         + stepperHTML(s)
-        + '<button class="back-link" data-action="goShop">← Continue Shopping</button>'
-        + '<h2 class="section-h">Your Shopping Bag</h2>'
-        + '<div class="cart-item">'
-        + '<img class="ci-thumb-photo" src="' + t.prod.img + '" onerror="this.onerror=null;this.src=\'' + t.prod.remoteImg + '\';" alt="' + esc(t.prod.name) + '" />'
-        + '<div class="ci-info"><div class="ci-name">' + esc(t.prod.name) + '</div><div class="ci-sub">' + esc(t.prod.subtitle) + ' · Qty 1</div></div>'
-        + '<div class="ci-price">' + fmt(t.item) + '</div>'
-        + '</div>'
+        + '<button class="back-link" data-action="goShop">← Add More Perfumes from Shop</button>'
+        + '<h2 class="section-h">Your Shopping Bag (' + t.count + ' ' + (t.count===1?'Item':'Items') + ')</h2>'
+        + itemsHTML
+        + upsellHTML
         + '<div class="addon muted" data-action="toggleGiftBox">'
         + '<div class="checkbox ' + (s.giftBox ? 'checked' : '') + '"></div>'
         + '<div class="addon-text">Include Gift Box &amp; Protective Bubble Wrap <span class="addon-price">(+' + fmt(CONFIG.giftBoxFee) + ')</span></div>'
@@ -902,7 +1015,7 @@
 
     function deliveryHTML(s){
       var t = totals(s);
-      var prePaymentTotal = t.item + t.gift + t.delivery; // Still hides Service Charge until Payment!
+      var prePaymentTotal = t.item + t.gift + t.delivery; // Still hides Service Charge until Payment
       return '<div class="checkout-container">'
         + stepperHTML(s)
         + '<button class="back-link" data-action="goCart">← Back to Cart</button>'
@@ -921,6 +1034,10 @@
     function paymentHTML(s){
       var t = totals(s);
       var displayName = (s.customer.name || '').trim() || 'Anonymous Participant';
+      var itemLines = t.items.map(function(it){
+        return '<div class="line"><span>' + esc(it.prod.name) + ' × ' + it.qty + '</span><span>' + fmt(it.subtotal) + '</span></div>';
+      }).join('');
+
       return '<div class="checkout-container">'
         + stepperHTML(s)
         + '<button class="back-link" data-action="goCart">← Edit Cart</button>'
@@ -929,7 +1046,7 @@
         + '<div class="pm-info"><div class="pm-name">bKash / Nagad</div><div class="pm-sub">Customer: <b>' + esc(displayName) + '</b></div></div>'
         + '<div class="pm-badge">SELECTED</div></div>'
         + '<div class="receipt">'
-        + '<div class="line"><span>' + esc(t.prod.name) + '</span><span>' + fmt(t.item) + '</span></div>'
+        + itemLines
         + (s.giftBox ? '<div class="line"><span>Gift Box &amp; Bubble Wrap</span><span>' + fmt(t.gift) + '</span></div>' : '')
         + '<div class="line"><span>Inside Dhaka Delivery</span><span>' + fmt(t.delivery) + '</span></div>'
         + callout(3, 'Drip Pricing', 'An unavoidable +৳25 "Service Charge" appears only at the final payment screen after the user has committed to buying.')
@@ -946,6 +1063,10 @@
       var elapsedSec = s.startedAt ? Math.max(1, Math.round((Date.now() - s.startedAt) / 1000)) : 1;
       var displayName = (s.customer.name || '').trim() || 'Anonymous Participant';
       var warn = (inspectorOn && exceeded) ? '<div class="budget-warn">⚠ Budget Exceeded — ' + fmt(CONFIG.budget) + ' limit</div>' : '';
+      var itemLines = t.items.map(function(it){
+        return '<div class="line"><span>' + esc(it.prod.name) + ' × ' + it.qty + '</span><span>' + fmt(it.subtotal) + '</span></div>';
+      }).join('');
+
       return '<div class="checkout-container">'
         + stepperHTML(s)
         + '<div class="confirm">'
@@ -955,7 +1076,7 @@
         + warn
         + '<div class="receipt">'
         + '<div class="line"><span>Customer Name</span><span>' + esc(displayName) + '</span></div>'
-        + '<div class="line"><span>' + esc(t.prod.name) + '</span><span>' + fmt(t.item) + '</span></div>'
+        + itemLines
         + (s.giftBox ? '<div class="line"><span>Gift Box &amp; Bubble Wrap</span><span>' + fmt(t.gift) + '</span></div>' : '')
         + '<div class="line"><span>Inside Dhaka Delivery</span><span>' + fmt(t.delivery) + '</span></div>'
         + '<div class="line"><span>Service Charge</span><span>' + fmt(t.platform) + '</span></div>'
@@ -981,10 +1102,13 @@
 
     /* ============================ SHELL ============================ */
     function websiteShell(s){
-      var t = totals(s);
-      var bagBadge = s.screen >= 2 ? fmt(t.item + t.gift) : fmt(t.item);
+      var count = getCartCount(s);
+      var toastHTML = toastText
+        ? '<div class="toast-msg"><span>' + esc(toastText) + '</span><button class="toast-btn" data-action="goCart">View Bag →</button></div>'
+        : '';
+
       return '<div class="storefront" data-session="B">'
-        + '<div class="announce-bar"><b>SOOVEŔ FLASH EVENT</b> · Luxury Fragrances from ৳50 · Limited Stock Remaining</div>'
+        + '<div class="announce-bar"><b>SOOVEŔ FLASH EVENT</b> · Regular ৳700 Perfumes Now From ৳450 · Limited Stock Remaining</div>'
         + '<header class="site-header">'
         + '<div class="header-inner">'
         + '<a class="site-brand" data-action="goHome">'
@@ -994,11 +1118,12 @@
         + '<nav class="site-nav">'
         + '<button class="nav-link ' + (s.screen===0?'active':'') + '" data-action="goHome">Home</button>'
         + '<button class="nav-link ' + (s.screen===1 || s.screen===6?'active':'') + '" data-action="goShop">Shop (3)</button>'
-        + '<button class="cart-btn" data-action="goCart"><span>🛒 Bag</span><span class="cart-badge">' + bagBadge + '</span></button>'
+        + '<button class="cart-btn" data-action="goCart"><span>🛒 Bag</span><span class="cart-badge">' + count + '</span></button>'
         + '</nav>'
         + '</div>'
         + '</header>'
         + '<main class="site-main">' + activeScreenHTML(s) + '</main>'
+        + toastHTML
         + '<footer class="site-footer">'
         + '<div class="footer-inner">'
         + '<div><div class="site-name" style="color:#fff;font-size:18px;">SOOVEŔ</div><div style="font-size:12px;margin-top:4px;">Luxury Pocket &amp; Extrait Perfumes · Crafted in Dhaka, Bangladesh</div></div>'
@@ -1011,7 +1136,7 @@
 
     function taskBanner(){
       return '<div class="task-banner"><span class="task-tag">Participant Task</span>'
-        + '<span>Strict budget: <b>' + fmt(CONFIG.budget) + '</b>. Explore the Shop, choose a SOOVEŔ perfume (৳50, ৳75, or ৳100), enter your name at Delivery, and complete checkout within ' + fmt(CONFIG.budget) + '.</span></div>';
+        + '<span>Strict budget: <b>' + fmt(CONFIG.budget) + '</b>. Explore the Shop, add 1 or 2 SOOVEŔ perfumes (৳450, ৳520, or ৳590 — Reg. ৳700), enter your name at Delivery, and complete checkout within ' + fmt(CONFIG.budget) + '.</span></div>';
     }
 
     function researcherLayout(){
@@ -1020,7 +1145,7 @@
         + '<header class="toolbar">'
         + '<div class="brand"><div class="brand-mark">SO</div>'
         + '<div><div class="brand-name">SOOVEŔ</div><div class="brand-sub">Prototype 2 · Dark Patterns (Group B)</div></div></div>'
-        + '<span class="sync-pill">● Group B → Google Sheet</span>'
+        + '<span class="sync-pill">● 9-Column Sheet Sync (B)</span>'
         + '<span class="live-pill">Device: ' + esc(s.id) + ' · Clicks: ' + (s.totalClicks || 0) + ' · Wrong: ' + (s.misclicks || 0) + '</span>'
         + '<nav class="tabs">'
         + '<button class="tab ' + (view==='B'?'active':'') + '" data-view="B">Prototype 2 (Dark Patterns)</button>'
@@ -1042,11 +1167,11 @@
 
     /* ============================ TELEMETRY LOG ============================ */
     function telemetryHTML(){
-      var exceeded = telemetry.filter(function(e){ return e.action && e.action.indexOf('EXCEEDED') > -1; }).length;
+      var exceeded = telemetry.filter(function(e){ return e.finalBill && e.finalBill.indexOf('EXCEEDED') > -1; }).length;
       function avgBill(arr){
         if(!arr.length) return '—';
         var sum = arr.reduce(function(a,e){
-          var m = (e.action || '').match(/Final\s*=\s*৳(\d+)/); return a + (m ? parseInt(m[1],10) : 0);
+          var m = (e.finalBill || '').match(/Final\s*=\s*৳(\d+)/); return a + (m ? parseInt(m[1],10) : 0);
         },0);
         return fmt(Math.round(sum/arr.length));
       }
@@ -1059,15 +1184,16 @@
         return '<tr><td class="mono">' + e.t + '</td>'
           + '<td class="mono">' + esc(e.sessionId || '—') + '</td>'
           + '<td><span class="grp-B">' + esc(e.group) + '</span></td>'
-          + '<td><b>' + esc(e.screen) + '</b></td>'
-          + '<td class="mono">' + esc(e.action) + '</td>'
-          + '<td>' + esc(e.detail) + '</td>'
+          + '<td><b>' + esc(e.customerName || '—') + '</b></td>'
+          + '<td>' + esc(e.product || '—') + '</td>'
+          + '<td class="mono">' + esc(e.finalBill || '—') + '</td>'
+          + '<td class="mono"><b>' + (e.totalClicks || 0) + '</b></td>'
           + '<td class="mono"><b>' + (e.elapsedSec || 0) + 's</b></td>'
           + '<td class="mono"><b>' + (e.misclicks || 0) + '</b></td></tr>';
       }).join('');
       return '<div class="telemetry-wrap"><div class="telemetry">'
-        + '<div class="tele-head"><div><h2>Prototype 2 Completed Orders Log (Group B · 1 Row Per Order)</h2>'
-        + '<p class="tele-sub">Completed orders are sent automatically to your Google Sheet (SOOVER HCI Data) as Group B.</p></div>'
+        + '<div class="tele-head"><div><h2>Prototype 2 Completed Orders Log (Group B · 9-Column Sync)</h2>'
+        + '<p class="tele-sub">Synced directly to your Google Sheet (Customer_Transactions) as Group B in the exact 9-column sequence.</p></div>'
         + '<div class="tele-actions"><button class="btn-ghost" data-action="exportCsv">⬇ Export CSV</button>'
         + '<button class="btn-ghost danger" data-action="clearLog">Clear Log</button></div></div>'
         + '<div class="cards">'
@@ -1077,8 +1203,8 @@
         + '<div class="card"><div class="card-v">' + avgBill(telemetry) + '</div><div class="card-l">Avg Order Total (B)</div></div>'
         + '</div>'
         + '<div class="table-wrap"><table class="tele-table"><thead><tr>'
-        + '<th>Timestamp</th><th>Device_ID</th><th>Group</th><th>Customer_Name</th><th>Product_&amp;_Bill</th><th>Total_Clicks &amp; Addon</th><th>Time_Sec</th><th>Wrong_Clicks</th></tr></thead><tbody>'
-        + (rows || '<tr><td colspan="8" class="empty">No completed orders yet. Complete an order to log 1 summary row as Group B.</td></tr>')
+        + '<th>Timestamp</th><th>Device_ID</th><th>Group</th><th>Customer_Name</th><th>Product</th><th>Final_Bill</th><th>Total_Clicks</th><th>Elapsed_Sec</th><th>Misclicks</th></tr></thead><tbody>'
+        + (rows || '<tr><td colspan="9" class="empty">No completed orders yet. Complete an order to log 1 summary row as Group B.</td></tr>')
         + '</tbody></table></div></div></div>';
     }
 
@@ -1087,9 +1213,9 @@
       return /[",\n]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v;
     }
     function exportCsv(){
-      var header = ['Timestamp','Device_ID','Group','Customer_Name','Product_And_Bill','Total_Clicks_Detail','Time_Sec','Wrong_Clicks'];
+      var header = ['Timestamp','Device_ID','Group','Customer_Name','Product','Final_Bill','Total_Clicks','Elapsed_Sec','Misclicks'];
       var lines = [header].concat(telemetry.map(function(e){
-        return [e.t, e.sessionId || '', e.group, e.screen, e.action, e.detail, e.elapsedSec || 0, e.misclicks || 0];
+        return [e.t, e.sessionId || '', e.group, e.customerName || '', e.product || '', e.finalBill || '', e.totalClicks || 0, e.elapsedSec || 0, e.misclicks || 0];
       }));
       var csv = lines.map(function(r){ return r.map(csvCell).join(','); }).join('\n');
       var blob = new Blob(['\uFEFF' + csv], { type:'text/csv;charset=utf-8;' });
@@ -1130,16 +1256,40 @@
         case 'viewProduct':
           if(prodId) s.selectedProductId = prodId;
           go(s, 6); break;
-        case 'buyProduct':
-          if(prodId) s.selectedProductId = prodId;
-          go(s, 2); break;
-        case 'addToCart':
-          go(s, 2); break;
+        case 'addItem':
+          var targetId = prodId || s.selectedProductId || 'hero';
+          s.cart = s.cart || {};
+          s.cart[targetId] = (Number(s.cart[targetId]) || 0) + 1;
+          saveActiveSession(s);
+          var addedProd = getProduct(targetId);
+          if(s.screen === 2){
+            render();
+          } else {
+            showToast('✓ Added ' + addedProd.name + ' (' + getCartCount(s) + ' in bag)');
+          }
+          break;
+        case 'incQty':
+          if(prodId){
+            s.cart = s.cart || {};
+            s.cart[prodId] = (Number(s.cart[prodId]) || 0) + 1;
+            saveActiveSession(s);
+            render();
+          }
+          break;
+        case 'decQty':
+          if(prodId && s.cart && s.cart[prodId]){
+            s.cart[prodId] = Math.max(0, Number(s.cart[prodId]) - 1);
+            if(s.cart[prodId] === 0) delete s.cart[prodId];
+            saveActiveSession(s);
+            render();
+          }
+          break;
         case 'toggleGiftBox':
           s.giftBox = !s.giftBox;
           saveActiveSession(s);
           render(); break;
         case 'proceedCheckout':
+          if(getCartCount(s) === 0){ go(s, 1); return; }
           go(s, 3); break;
         case 'continuePayment':
           if(!(s.customer.name || '').trim()){
@@ -1197,7 +1347,6 @@
         saveActiveSession(s);
       });
 
-      // Live countdown ticker for Dark Pattern 1 (Fake Urgency)
       setInterval(function(){
         var s = sessions['B'];
         if(s && s.screen !== 5){
